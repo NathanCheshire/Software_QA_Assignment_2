@@ -30,6 +30,10 @@ public class TDD {
      */
 
     public static void main(String[] args) {
+        new TDD();
+    }
+
+    private TDD() {
         System.out.println("Starting program at: " + System.currentTimeMillis());
 
 
@@ -37,24 +41,27 @@ public class TDD {
         System.out.println("Ending program at:   " + System.currentTimeMillis());
     }
 
-    public double BMI(int feet, double inches, double pounds) {
-        double ret = 0;
+    private double BMI(int feet, double inches, double pounds) {
+        pounds *= 0.45; //now weight is in kg
 
+        inches += feet * 12; //now we can work with just inches
+        inches *= 0.025; //now inches is in metric also
+        inches *= inches; //squared
 
-
-        return ret;
+        return pounds/inches;
     }
 
-    public String getBMICategory(double BMI) {
+    private String getBMICategory(double BMI) {
         if (BMI < 18.5)
             return "underweight";
 
-        else if (BMI >= 18.5 && BMI < 24.9)
+        else if (BMI >= 18.5 && BMI < 25)
             return "normal";
 
-        else if (BMI > 25 && BMI <= 29.9)
+        else if (BMI >= 25 && BMI <= 29.9)
             return "Obese";
 
+        //should only be 30+ here
         return "overweight";
     }
 }
