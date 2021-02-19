@@ -29,16 +29,19 @@ public class TDD {
      * savings goal is not met).
      */
 
+    //https://www.jetbrains.com/help/idea/tdd-with-intellij-idea.html
+
     public static void main(String[] args) {
         new TDD();
     }
 
     private TDD() {
-        System.out.println("Starting program at: " + System.currentTimeMillis());
+        long start = System.currentTimeMillis();
 
+        //write all tests here now
 
-
-        System.out.println("Ending program at:   " + System.currentTimeMillis());
+        long end = System.currentTimeMillis();
+        System.out.println("Program operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
     private double BMI(int feet, double inches, double pounds) {
