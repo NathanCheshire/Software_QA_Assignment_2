@@ -35,7 +35,7 @@ public class TDD {
         new TDD();
     }
 
-    private TDD() {
+    public TDD() {
         long start = System.currentTimeMillis();
 
         //write all tests here now
@@ -44,7 +44,7 @@ public class TDD {
         System.out.println("Program operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
-    private double BMI(int feet, double inches, double pounds) {
+    public double BMI(int feet, double inches, double pounds) {
         pounds *= 0.45; //now weight is in kg
 
         inches += feet * 12; //now we can work with just inches
@@ -54,7 +54,7 @@ public class TDD {
         return pounds/inches;
     }
 
-    private String getBMICategory(double BMI) {
+    public String getBMICategory(double BMI) {
         if (BMI < 18.5)
             return "underweight";
 
@@ -62,7 +62,7 @@ public class TDD {
             return "normal";
 
         else if (BMI >= 25 && BMI <= 29.9)
-            return "Obese";
+            return "obese";
 
         //should only be 30+ here
         return "overweight";
