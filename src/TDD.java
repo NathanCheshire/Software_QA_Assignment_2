@@ -62,9 +62,9 @@ public class TDD {
             return "normal";
 
         else if (BMI >= 25.0 && BMI <= 29.9)
-            return "obese";
+            return "overweight";
 
         //should only be 30+ here
-        return "overweight";
+        return "obese";
     }
 }
