@@ -1,16 +1,15 @@
+/**
+ Spring 2020
+ CSE4283
+ Software Testing and QA
+ Assignment 2
+ Due: 11:59PM, 3/4/21
+
+ * @author  Nathan Cheshire
+ * @version 1.1
+ * @since  03-04-2021
+ */
 public class TDD {
-    /**
-     * Spring 2020
-     * CSE4283
-     * Software Testing and QA
-     * Assignment 2
-     * Due: 11:59PM, 3/4/21
-     */
-
-    /**
-     * @author Nathan Cheshire
-     */
-
     /**
      * Requirements
      * Command Line Interface - Develop a command line app that prompts the user to select a
@@ -29,13 +28,13 @@ public class TDD {
      * savings goal is not met).
      */
 
-    //https://www.jetbrains.com/help/idea/tdd-with-intellij-idea.html
+    //JUnit walkthrough I looked at: https://www.jetbrains.com/help/idea/tdd-with-intellij-idea.html
 
     public static void main(String[] args) {
         new TDD();
     }
 
-    public TDD() {
+    TDD() {
         long start = System.currentTimeMillis();
 
         //write all tests here now
@@ -44,7 +43,7 @@ public class TDD {
         System.out.println("TDD obj operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
-    public double BMI(int feet, double inches, double pounds) {
+    double BMI(int feet, double inches, double pounds) {
         pounds *= 0.45; //now weight is in kg
 
         inches += feet * 12; //now we can work with just inches
@@ -54,7 +53,7 @@ public class TDD {
         return pounds/inches;
     }
 
-    public String getBMICategory(double BMI) {
+    String getBMICategory(double BMI) {
         if (BMI < 18.5)
             return "underweight";
 
@@ -66,5 +65,22 @@ public class TDD {
 
         //should only be 30+ here
         return "obese";
+    }
+
+    //employer matches 35% of total savings apparently
+    double retirementAge(int age, double analSalary, double percentSaved, double desiredSavings) {
+        double analSavings = analSalary * percentSaved * 1.35;
+        double totalSavings = 0;
+
+        while (totalSavings < desiredSavings) {
+            totalSavings += analSavings;
+            age++;
+        }
+
+        return age;
+    }
+
+    String retirementCategory(double retirementAge) {
+        return (retirementAge >= 100.0 ? "will meet" : "will not meet");
     }
 }
