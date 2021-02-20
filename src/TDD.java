@@ -41,7 +41,7 @@ public class TDD {
         //write all tests here now
 
         long end = System.currentTimeMillis();
-        System.out.println("Program operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
+        System.out.println("TDD obj operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
     public double BMI(int feet, double inches, double pounds) {
@@ -58,10 +58,10 @@ public class TDD {
         if (BMI < 18.5)
             return "underweight";
 
-        else if (BMI >= 18.5 && BMI < 25)
+        else if (BMI >= 18.5 && BMI < 25.0)
             return "normal";
 
-        else if (BMI >= 25 && BMI <= 29.9)
+        else if (BMI >= 25.0 && BMI <= 29.9)
             return "obese";
 
         //should only be 30+ here

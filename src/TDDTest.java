@@ -33,6 +33,17 @@ public class TDDTest {
 
     @Test
     public void bmiCalculationTest() {
-        assertEquals(21.323,TDD.BMI(5,9,141));
+        //added a delta here instead of using number formatters to do our rounding for us
+        assertEquals(21.323,TDD.BMI(5,9,141),0.001);
+    }
+
+    @Test
+    public void ageCalculationTest() {
+
+    }
+
+    @Test
+    public void savingsCalculationCategoryTest() {
+
     }
 }
