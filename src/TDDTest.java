@@ -44,6 +44,11 @@ public class TDDTest {
 
     @Test
     public void savingsCalculationCategoryTest() {
-
+        assertEquals("will meet",TDD.retirementCategory(70.0));
+        assertEquals("will meet",TDD.retirementCategory(99.0));
+        assertEquals("will meet",TDD.retirementCategory(99.9));
+        assertEquals("will not meet",TDD.retirementCategory(100.0));
+        assertEquals("will not meet",TDD.retirementCategory(100.1));
+        assertEquals("will not meet",TDD.retirementCategory(150.0));
     }
 }
