@@ -1,3 +1,6 @@
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 /**
  Spring 2020
  CSE4283
@@ -37,13 +40,33 @@ public class TDD {
     TDD() {
         long start = System.currentTimeMillis();
 
-        //write all tests here now
+        Scanner s = new Scanner(new InputStreamReader(System.in));
+
+        while (true) {
+            System.out.print("Enter your choice:\n(1)Body Mass Index Calculator\n(2)Retirement Calculator\n(3)exit\n>> ");
+
+            String input = s.next();
+
+            while (!input.equals("1") && !input.equals("2") && !input.equals("3")) {
+                System.out.println("Invalid option, must enter 1,2, or 3");
+                System.out.print("Enter your choice:\n(1)Body Mass Index Calculator\n(2)Retirement Calculator\n(3)exit\n>> ");
+            }
+
+            if (Integer.parseInt(input) == 1) {
+                //todo get parts for BMI
+            } else if (Integer.parseInt(input) == 2) {
+                //todo get parts for retirement
+            } else if (Integer.parseInt(input) == 3) {
+                System.out.println("Exiting program");
+                break;
+            }
+        }
 
         long end = System.currentTimeMillis();
         System.out.println("TDD obj operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
-    double BMI(int feet, double inches, double pounds) {
+    static double BMI(int feet, double inches, double pounds) {
         pounds *= 0.45; //now weight is in kg
 
         inches += feet * 12; //now we can work with just inches
@@ -53,7 +76,7 @@ public class TDD {
         return pounds/inches;
     }
 
-    String getBMICategory(double BMI) {
+    static String getBMICategory(double BMI) {
         if (BMI < 18.5)
             return "underweight";
 
@@ -68,7 +91,7 @@ public class TDD {
     }
 
     //employer matches 35% of total savings apparently
-    double retirementAge(int age, double analSalary, double percentSaved, double desiredSavings) {
+    static double retirementAge(int age, double analSalary, double percentSaved, double desiredSavings) {
         double analSavings = analSalary * percentSaved * 1.35;
         double totalSavings = 0;
 
@@ -80,7 +103,7 @@ public class TDD {
         return age;
     }
 
-    String retirementCategory(double retirementAge) {
+    static String retirementCategory(double retirementAge) {
         return (retirementAge >= 100.0 ? "will not meet" : "will meet");
     }
 }

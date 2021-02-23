@@ -4,12 +4,9 @@ import static org.junit.Assert.*;
 
 public class TDDTest {
 
-    private TDD TDD;
-
     @org.junit.Before
     public void setUp() throws Exception {
         System.out.println("Setup (optional)");
-        TDD = new TDD();
 
     }
 
@@ -39,7 +36,7 @@ public class TDDTest {
 
     @Test
     public void ageCalculationTest() {
-
+        //todo make sure that you have the correct equation
     }
 
     @Test
