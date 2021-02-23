@@ -37,7 +37,7 @@ public class TDD {
         new TDD();
     }
 
-    TDD() {
+    private TDD() {
         long start = System.currentTimeMillis();
 
         Scanner s = new Scanner(new InputStreamReader(System.in));
@@ -53,20 +53,171 @@ public class TDD {
             }
 
             if (Integer.parseInt(input) == 1) {
-                //todo get parts for BMI
+                double feet;
+                double inches;
+                double pounds;
+
+                System.out.print("Enter your height in feet (inches are next)\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        feet = Double.parseDouble(input);
+
+                        if (feet > 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your feet value must be a positive number");
+                        System.out.print("Enter your height in feet (inches are next)\n>> ");
+                    }
+                }
+
+                System.out.print("Enter your inches measurement (should be less than 12)\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        inches = Double.parseDouble(input);
+
+                        if (inches > 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your inches value must be a positive number");
+                        System.out.print("Enter your inches measurement (should be less than 12)\n>> ");
+                    }
+                }
+
+                while (inches > 12.0) {
+                    inches -= 12.0;
+                    feet++;
+                }
+
+                System.out.print("Enter your weight in pounds\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        pounds = Double.parseDouble(input);
+
+                        if (pounds > 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your pounds value must be a positive number");
+                        System.out.print("Enter your weight in pounds\n>> ");
+                    }
+                }
+
+                double bmi = BMI(feet,inches,pounds);
+                System.out.println("Your BMI is: " + String.format("%,.3f", bmi) + " (" + getBMICategory(bmi) + ")");
+
             } else if (Integer.parseInt(input) == 2) {
-                //todo get parts for retirement
-            } else if (Integer.parseInt(input) == 3) {
-                System.out.println("Exiting program");
+                double age;
+                double analSalary;
+                double percentSaved; //add 35% to this (percent should be between 0-100)
+                double desiredSavings;
+
+                System.out.print("Enter your age in years\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        age = Double.parseDouble(input);
+
+                        if (age > 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your age value must be a positive number");
+                        System.out.print("Enter your age in years\n>> ");
+                    }
+                }
+
+                System.out.print("Enter your anual salary in dollars\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        analSalary = Double.parseDouble(input);
+
+                        if (analSalary >= 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your salary value must be a positive number (exclude any non-number characters)");
+                        System.out.print("Enter your anual salary in dollars\n>> ");
+                    }
+                }
+
+                System.out.print("Enter the percent of your anual salary that you save (0-100)\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        percentSaved = Double.parseDouble(input);
+
+                        if (percentSaved >= 0 && percentSaved <= 100)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your percent saved value must be a positive number between 0 and 100");
+                        System.out.print("Enter the percent of your anual salary that you save (0-100)\n>> ");
+                    }
+                }
+
+                System.out.print("Enter your desired savings when you retire\n>> ");
+
+                while (true) {
+                    input = s.next();
+
+                    try {
+                        desiredSavings = Double.parseDouble(input);
+
+                        if (desiredSavings >= 0)
+                            break;
+                        else
+                            throw new Exception("not positive so skip to catch");
+
+                    } catch (Exception e) {
+                        System.out.println("Your retirement savings must be a positive number");
+                        System.out.print("Enter your desired savings when you retire\n>> ");
+                    }
+                }
+
+                percentSaved += 35;
+
+                System.out.println(age + "," + analSalary + "," + percentSaved + "," + desiredSavings);
+
+            } else if (Integer.parseInt(input) == 3)
                 break;
-            }
+
         }
 
         long end = System.currentTimeMillis();
         System.out.println("TDD obj operated for:   " + (end - start) + "ms (" + (end - start) / 1000.0 + "s)");
     }
 
-    static double BMI(int feet, double inches, double pounds) {
+    static double BMI(double feet, double inches, double pounds) {
         pounds *= 0.45; //now weight is in kg
 
         inches += feet * 12; //now we can work with just inches
