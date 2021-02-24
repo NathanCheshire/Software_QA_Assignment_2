@@ -120,7 +120,7 @@ public class TDD {
                 }
 
                 double bmi = BMI(feet,inches,pounds);
-                System.out.println("Your BMI is: " + String.format("%,.3f", bmi) + " (" + getBMICategory(bmi) + ")");
+                System.out.println("Your BMI is: " + String.format("%,.3f", bmi) + " (" + getBMICategory(bmi) + ")\n");
 
             } else if (Integer.parseInt(input) == 2) {
                 double age;
@@ -204,9 +204,16 @@ public class TDD {
                     }
                 }
 
-                percentSaved += 35;
-
-                System.out.println(age + "," + analSalary + "," + percentSaved + "," + desiredSavings);
+                System.out.println("Given the following inputs: ");
+                System.out.println("Age: " + age);
+                System.out.println("Anual salary: " + analSalary);
+                System.out.println("Percent of anual salary saved (employer matches 35% of this)");
+                System.out.println("\tBefore: " + percentSaved);
+                System.out.println("Desired retirement savings: " + desiredSavings);
+                double retAge = retirementAge(age,analSalary,percentSaved,desiredSavings);
+                System.out.println("Given all this, you will be the age of " + retAge
+                                   + " by the time you meet your desired savings goal (" + desiredSavings + ")\n" +
+                                   "This means you " + retirementCategory(retAge) + " your desired savings goal.\n");
 
             } else if (Integer.parseInt(input) == 3)
                 break;
@@ -242,8 +249,8 @@ public class TDD {
     }
 
     //employer matches 35% of total savings apparently
-    static double retirementAge(int age, double analSalary, double percentSaved, double desiredSavings) {
-        double analSavings = analSalary * percentSaved * 1.35;
+    static double retirementAge(double age, double analSalary, double percentSaved, double desiredSavings) {
+        double analSavings = analSalary * (percentSaved / 100.0) * 1.35;
         double totalSavings = 0;
 
         while (totalSavings < desiredSavings) {
