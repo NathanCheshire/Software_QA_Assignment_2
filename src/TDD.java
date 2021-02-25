@@ -125,7 +125,7 @@ public class TDD {
             } else if (Integer.parseInt(input) == 2) {
                 double age;
                 double analSalary;
-                double percentSaved; //add 35% to this (percent should be between 0-100)
+                double percentSaved; //add 35% to this (percent should be between 0-135 in the end)
                 double desiredSavings;
 
                 System.out.print("Enter your age in years\n>> ");
@@ -166,7 +166,7 @@ public class TDD {
                     }
                 }
 
-                System.out.print("Enter the percent of your anual salary that you save (0-100)\n>> ");
+                System.out.print("Enter the percent of your anual salary that you save [0,100]\n>> ");
 
                 while (true) {
                     input = s.next();
@@ -180,7 +180,7 @@ public class TDD {
                             throw new Exception("not positive so skip to catch");
 
                     } catch (Exception e) {
-                        System.out.println("Your percent saved value must be a positive number between 0 and 100");
+                        System.out.println("Your percent saved value must be a positive number in the range [0, 100]");
                         System.out.print("Enter the percent of your anual salary that you save (0-100)\n>> ");
                     }
                 }
@@ -210,8 +210,14 @@ public class TDD {
                 System.out.println("Percent of anual salary saved (employer matches 35% of this)");
                 System.out.println("\tBefore: " + percentSaved);
                 System.out.println("Desired retirement savings: " + desiredSavings);
+
                 double retAge = retirementAge(age,analSalary,percentSaved,desiredSavings);
-                System.out.println("Given all this, you will be the age of " + retAge
+                if (retAge == Double.MAX_VALUE)
+                    System.out.println("If you don't make money or don't plan to save, then you definitely will not meet your savings goal.");
+                else if (retAge == age)
+                    System.out.println("It would seem you have already met your savings goal.");
+                else
+                    System.out.println("Given all this, you will be the age of " + retAge
                                    + " by the time you meet your desired savings goal (" + desiredSavings + ")\n" +
                                    "This means you " + retirementCategory(retAge) + " your desired savings goal.\n");
 
@@ -248,8 +254,12 @@ public class TDD {
         return "obese";
     }
 
-    //employer matches 35% of total savings apparently
     static double retirementAge(double age, double analSalary, double percentSaved, double desiredSavings) {
+        if ((analSalary == 0 || percentSaved == 0) && desiredSavings != 0)
+            return Double.MAX_VALUE;
+        else if (desiredSavings == 0)
+            return age;
+
         double analSavings = analSalary * (percentSaved / 100.0) * 1.35;
         double totalSavings = 0;
 

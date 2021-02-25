@@ -36,7 +36,12 @@ public class TDDTest {
 
     @Test
     public void ageCalculationTest() {
-        //todo make sure that you have the correct equation
+        //todo find values here
+        assertEquals(0,TDD.retirementAge(10,100000,12,700000));
+        assertEquals(0,TDD.retirementAge(20,0,50,600000));
+        assertEquals(0,TDD.retirementAge(60,1,0,3000000));
+        assertEquals(0,TDD.retirementAge(80,100000,100,0));
+        assertEquals(0,TDD.retirementAge(100,50,57,900000000));
     }
 
     @Test
