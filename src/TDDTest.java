@@ -36,12 +36,16 @@ public class TDDTest {
 
     @Test
     public void ageCalculationTest() {
-        //todo find values here
-        assertEquals(0,TDD.retirementAge(10,100000,12,700000));
-        assertEquals(0,TDD.retirementAge(20,0,50,600000));
-        assertEquals(0,TDD.retirementAge(60,1,0,3000000));
-        assertEquals(0,TDD.retirementAge(80,100000,100,0));
-        assertEquals(0,TDD.retirementAge(100,50,57,900000000));
+        //class examples
+        assertEquals(196,TDD.retirementAge(25,65000,10,1500000),0);
+        assertEquals(70,TDD.retirementAge(45,100000,15,500000),0);
+
+        //my test cases
+        assertEquals(54,TDD.retirementAge(10,100000,12,700000),0);
+        assertEquals(Double.MAX_VALUE,TDD.retirementAge(20,0,50,600000),0);
+        assertEquals(Double.MAX_VALUE,TDD.retirementAge(60,1,0,3000000),0);
+        assertEquals(80,TDD.retirementAge(80,100000,100,0),0);
+        assertEquals(26091,TDD.retirementAge(100,50,57,1000000),0);
     }
 
     @Test
