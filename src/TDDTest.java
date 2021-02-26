@@ -17,6 +17,7 @@ public class TDDTest {
 
     @Test
     public void bmiCategoryTest() {
+        assertEquals("underweight", TDD.getBMICategory(16.0));
         assertEquals("underweight", TDD.getBMICategory(18.4));
         assertEquals("normal", TDD.getBMICategory(18.5));
         assertEquals("normal", TDD.getBMICategory(18.6));
@@ -26,12 +27,15 @@ public class TDDTest {
         assertEquals("overweight", TDD.getBMICategory(29.9));
         assertEquals("obese", TDD.getBMICategory(30.0));
         assertEquals("obese", TDD.getBMICategory(30.1));
+        assertEquals("obese", TDD.getBMICategory(50.0));
     }
 
     @Test
     public void bmiCalculationTest() {
         //added a delta here instead of using number formatters to do our rounding for us
         assertEquals(21.323,TDD.BMI(5,9,141),0.001);
+        assertEquals(31.026,TDD.BMI(4,11,150),0.001);
+        assertEquals(25.639,TDD.BMI(6,2,195),0.001);
     }
 
     @Test
