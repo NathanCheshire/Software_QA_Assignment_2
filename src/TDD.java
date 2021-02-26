@@ -43,7 +43,7 @@ public class TDD {
         Scanner s = new Scanner(new InputStreamReader(System.in));
 
         while (true) {
-            System.out.print("Enter your choice:\n(1)Body Mass Index Calculator\n(2)Retirement Calculator\n(3)exit\n>> ");
+            System.out.print("Enter your choice:\n(1)Body Mass Index Calculator\n(2)Retirement Age Calculator\n(3)exit\n>> ");
 
             String input = s.next();
 
@@ -259,16 +259,8 @@ public class TDD {
             return Double.MAX_VALUE;
         else if (desiredSavings == 0)
             return age;
-
-        double analSavings = analSalary * (percentSaved / 100.0) * 1.35;
-        double totalSavings = 0;
-
-        while (totalSavings < desiredSavings) {
-            totalSavings += analSavings;
-            age++;
-        }
-
-        return age;
+        else
+            return Math.ceil((desiredSavings / (1.35 * percentSaved / 100.0 * analSalary)) + age);
     }
 
     static String retirementCategory(double retirementAge) {
