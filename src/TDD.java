@@ -247,7 +247,7 @@ public class TDD {
         else if (BMI >= 18.5 && BMI < 25.0)
             return "normal";
 
-        else if (BMI >= 25.0 && BMI <= 29.9)
+        else if (BMI >= 25.0 && BMI < 30.0)
             return "overweight";
 
         //should only be 30+ here
