@@ -8,7 +8,7 @@ I executed the tests with the following environment:
 - Junit
 
 Screen shots of tests:
-![Age Calculation Test](https://imgur.com/Kvx00P4)
-![BMI Calculation Test](https://imgur.com/P3Rcj0k)
-![BMI Category Test](https://imgur.com/HkpVHoa)
-![Savings Calculation Test](https://imgur.com/Nn0mWZv)
+![Age Calculation Test](https://i.imgur.com/Kvx00P4.png)
+![BMI Calculation Test](https://i.imgur.com/P3Rcj0k.png)
+![BMI Category Test](https://i.imgur.com/HkpVHoa.png)
+![Savings Calculation Test](https://i.imgur.com/Nn0mWZv.png)
